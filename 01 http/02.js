@@ -1,12 +1,14 @@
-//搭建简单的http服务器
+//搭建http服务器的另一种写法
 const http = require('http');
+const server = http.Server();
 
-http
-    .createServer((req, res) => {
+server
+    .on('request', (req, res) => {
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
-        res.end('Hello World!');
+        res.write('Hello World!');
+        res.end();
     })
     .listen(9000, () => {
         console.log('Server running at port 9000!');
