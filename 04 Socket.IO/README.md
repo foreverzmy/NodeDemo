@@ -106,9 +106,7 @@ app.get('/', function(req, res){
 ```
 如果你重新启动进程(通过点击 Control+C 并且再次运行`node index`)并且刷新页面会看到如下页面：
 
-<div style='text-align:center'>
 ![](http://oef1ordmv.bkt.clouddn.com/985FgSH2HQ.png)
-</div>
 
 ### 整合Socket.IO
 
@@ -159,9 +157,7 @@ http.listen(3000, function(){
 如果你现在重新加载服务器和网站，你会看到控制台打印“a user connected”。
 尝试打开多个页面，你会看到以下消息：
 
-<div style='text-align:center'>
 ![](http://oef1ordmv.bkt.clouddn.com/F5EBcTVDcd.png)
-</div>
 
 每个socket也会触发一个特殊的`disconnect`事件。
 
@@ -175,9 +171,7 @@ io.on('connection', function(socket){
 ```
 然后如果你刷新页面几次，你就会看到：
 
-<div style='text-align:center'>
 ![](http://oef1ordmv.bkt.clouddn.com/bOmy6xrJmi.png)
-</div>
 
 ### Emitting事件
 
@@ -209,11 +203,9 @@ io.on('connection', function(socket){
 ```
 运行结果应如下:
 
-<div style='text-align:center'>
-  <video autoplay="" loop="" width="100%">
-    <source src="http://oef1ordmv.bkt.clouddn.com/zboNrGSsai.mp4">
-  </video>
-</div>
+<video autoplay="" loop="" width="100%">
+  <source src="http://oef1ordmv.bkt.clouddn.com/zboNrGSsai.mp4">
+</video>
 
 ### 广播
 
@@ -261,11 +253,12 @@ io.on('connection', function(socket){
 
 这样大约20行代码就完成了我们的聊天程序，看起来应该是这个样子：
 
-<div style='text-align:center'>
-  <video autoplay="" loop="" width="100%">
-    <source src="http://oef1ordmv.bkt.clouddn.com/J4xwRU9DRn.mp4">
-  </video>
-</div>
+<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
+      <p>Your user agent does not support the HTML5 Video element.</p>
+    </video>
 
 ###　Homework
 
