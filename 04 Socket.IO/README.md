@@ -180,7 +180,7 @@ io.on('connection', (socket) => {
 
 ### Emitting事件
 
-Socket.IO背后的主要思想是你可以接受和发送你想要的任何事件、任何数据。任何可以编码为JSON的对象都可以，也支持[二进制数据](http://socket.io/blog/introducing-socket-io-1-0/#binary)。
+Socket.IO背后的主要思想是你可以接受和发送你想要的任何事件和里面的任何数据。任何可以编码为JSON的对象都可以，也支持[二进制数据](http://socket.io/blog/introducing-socket-io-1-0/#binary)。
 
 当用户发送消息时，我们让服务端接收并作为一个`chat message`事件，`index.html`的`script`部分应如下所示：
 
