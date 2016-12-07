@@ -203,9 +203,7 @@ io.on('connection', function(socket){
 ```
 运行结果应如下:
 
-<video autoplay="" loop="" width="100%">
-  <source src="http://oef1ordmv.bkt.clouddn.com/zboNrGSsai.mp4">
-</video>
+![](http://oef1ordmv.bkt.clouddn.com/a.gif)
 
 ### 广播
 
@@ -253,12 +251,7 @@ io.on('connection', function(socket){
 
 这样大约20行代码就完成了我们的聊天程序，看起来应该是这个样子：
 
-<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
-      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
-      <p>Your user agent does not support the HTML5 Video element.</p>
-    </video>
+![](http://oef1ordmv.bkt.clouddn.com/b.gif)
 
 ###　Homework
 
