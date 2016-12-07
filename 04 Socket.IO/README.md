@@ -278,7 +278,8 @@ io.on('connection', function(socket){
 [原版DEMO](https://github.com/rauchg/chat-example)
 、[我的DEMO](https://github.com/zmyforever1/NodeDemo/tree/master/04%20Socket.IO)
 
+原版DEMO的git地址：
+
 ```git
 $ git clone https://github.com/guille/chat-example.git
 ```
-
