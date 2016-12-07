@@ -274,8 +274,11 @@ io.on('connection', function(socket){
 
 ### 获取此示例
 
-你可以在Github上找到：[DEMO]();
+你可以在Github上找到：
+[原版DEMO](https://github.com/rauchg/chat-example)
 
 ```git
 $ git clone https://github.com/guille/chat-example.git
 ```
+
+[我的DEMO](https://github.com/zmyforever1/NodeDemo/tree/master/04%20Socket.IO)
