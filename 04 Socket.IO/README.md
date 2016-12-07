@@ -20,9 +20,9 @@ Sockets一直以来是构建大多数实时聊天系统的解决方案，在客�
 
 第一个目标是建立一个简单的HTML页面，提供一个表单和一个消息列表，我们将使用Node.js的web框架`express`做这一步，确保Node.js已安装。
 
-首先创建一个`package.json`清单文件来描述项目，我们建议你把它放在一个专门的空目录(我把它命名为`chat-example`)。
+首先创建一个`package.json`清单文件来描述项目，建议把它放在一个专门的空目录(我把它命名为`chat-example`)。
 
-> 注：在我的仓库中，我命名为`04 Socket`
+> 注：在我的仓库中，我命名为`04 Socket`，但是我把这个项目放在了01文件夹中，02...是对该项目的扩充。
 
 ```json
 {
@@ -39,9 +39,9 @@ Sockets一直以来是构建大多数实时聊天系统的解决方案，在客�
 npm install --save express@4.10.2
 ```
 
-> 注：这里是直接指定了安装4.10.2版本的express，也可以不加版本号直接安装最新版本的express。
+> 注：这里是直接指定了安装4.10.2版本的express，也可以不加版本号直接安装最新版本的express：`npm install --save express`。
 
-现在express已经安装了，我们可以创建一个`index.js`文件来设置我们的应用程序。
+现在express已经安装了，我们可以创建一个`index.js`文件来配置我们的应用程序。
 
 ```javascript
 const app = require('express')();
@@ -65,13 +65,13 @@ http.listen(3000, () => {
 
 ![](http://oef1ordmv.bkt.clouddn.com/LsMcTduUg.png)
 
-并且你的浏览器访问`http://localhost:3000`时：
+当你的浏览器访问`http://localhost:3000`时：
 
 ![](http://oef1ordmv.bkt.clouddn.com/AOuGSHy7QM.png)
 
 ###访问HTML
 
-到目前为止，我们在`index.js`中调用了`res.send`并传递了一个HTML字符串。如果把我们整个应用程序的HTML都放在这里，那会看起来十分混乱。因此，我们创建一个`index.html`文件并引入它。
+到目前为止，我们是在`index.js`中调用了`res.send`并传递了一个HTML字符串。但如果把我们整个应用的HTML都放在这里，那会看起来十分混乱。因此，我们创建一个`index.html`文件并引入它。
 
 让我们使用`sendFile`重构我们的路由处理程序：
 
@@ -80,7 +80,7 @@ app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);
 });
 ```
-接着使用以下内容填充`index.html`：
+然后使用以下内容填充`index.html`：
 
 ```HTML
 <!doctype html>
@@ -106,7 +106,7 @@ app.get('/', (req, res) => {
   </body>
 </html>
 ```
-如果你重新启动进程(通过点击 Control+C 并再次运行`node index`)然后刷新窗口会看到如下页面：
+如果你重新启动进程(通过点击 Control+C 并再次运行`node index`)然后刷新窗口就会看到如下页面：
 
 ![](http://oef1ordmv.bkt.clouddn.com/985FgSH2HQ.png)
 
@@ -117,7 +117,7 @@ Socket.IO由两部分组成：
 * 整合(或依托于)Node.js HTTP Server的服务器:`socket.io`
 * 在浏览器端加载的客户端库:`socket.io-client`
 
-在开发过程中，`socket.io`会自动为我们服务客户端，现在我们只需要安装一个模块：
+在开发过程中，`socket.io`会自动为我们服务客户端，因此，现在我们只需要安装一个模块：
 
 ```npm
 npm install --save socket.io
@@ -126,24 +126,24 @@ npm install --save socket.io
 这会安装模块并添加依赖关系到`package.json`。现在，我们编辑`index.js`来添加：
 
 ```javascript
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-app.get('/', function(req, res){
+app.get('', (req, res) => {
   res.sendfile('index.html');
 });
 
-io.on('connection', function(socket){
+io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
-http.listen(3000, function(){
+http.listen(3000, () => {
   console.log('listening on *:3000');
 });
 ```
 
-注意，我通过传递`http`(HTTP服务器)来初始化`socket.io`的一个新实例，然后监听sockets的`connection`连接事件，并将其记录到控制台。
+注意，我通过传递`http`(HTTP服务器)来初始化`socket.io`的一个新实例，然后监听连接sockets的`connection`事件，并将其记录到控制台。
 
 现在在`index.html`中，`</body>`前添加以下代码段：
 
@@ -156,7 +156,7 @@ http.listen(3000, function(){
 
 加载`socket.io-client`会暴露一个全局`io`并连接。
 
-注意，当我调用`io()`时，我没有指定任何URL，因为他默认尝试连接到提供页面的主机。
+注意，当我调用`io()`时，没有指定任何URL，因为他默认尝试连接到提供页面的主机。
 
 如果你现在重新加载服务器和网站，你会看到控制台打印`a user connected`。
 尝试打开多个页面，你会看到以下消息：
@@ -180,9 +180,9 @@ io.on('connection', (socket) => {
 
 ### Emitting事件
 
-Socket.IO背后的主要思想是你可以接受和发送你想要的任何事件、任何数据。任何可以编码为JSON的对象都可以，也支持二进制数据。
+Socket.IO背后的主要思想是你可以接受和发送你想要的任何事件、任何数据。任何可以编码为JSON的对象都可以，也支持[二进制数据](http://socket.io/blog/introducing-socket-io-1-0/#binary)。
 
-当用户键入消息时，我们让服务端得到它并作为一个聊天消息事件，`index.html`的`script`部分应如下所示：
+当用户发送消息时，我们让服务端接收并作为一个`chat message`事件，`index.html`的`script`部分应如下所示：
 
 ```HTML
 <script src="/socket.io/socket.io.js"></script>
@@ -197,7 +197,7 @@ Socket.IO背后的主要思想是你可以接受和发送你想要的任何事�
 </script>
 ```
 
-并且在`index.js`中我们打印出来`chat message`事件:
+同时在`index.js`中我们打印出来`chat message`事件:
 
 ```javascript
 io.on('connection', (socket) => {
@@ -238,11 +238,11 @@ io.on('connection', (socket) => {
 });
 ```
 
-在客户端，当我们捕获`chat message`事件时我们会将其包含在页面中，所有客户端javascript代码如下：
+在客户端，当我们捕获`chat message`事件时我们会将其显示在页面中，所有客户端javascript代码如下：
 
-```javascript
+```HTML
 <script>
-  var socket = io();
+  const socket = io();
   $('form').submit(function(){
     socket.emit('chat message', $('#m').val());
     $('#m').val('');
@@ -251,7 +251,7 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     $('#messages').append($('<li>').text(msg));
   });
-<\/script>
+</script>
 ```
 
 这样大约20行代码就完成了我们的聊天程序，看起来应该是下面这样：
@@ -260,7 +260,7 @@ io.on('connection', (socket) => {
 
 ###　Homework
 
-这里有一下改善应用程序的想法：
+这里有一些改善应用程序的想法：
 
 * 当有人连接或断开连接时，向连接的用户广播消息;
 * 添加对昵称的支持;
@@ -268,6 +268,7 @@ io.on('connection', (socket) => {
 * 添加用户正在输入功能;
 * 显示谁在线;
 * 添加私人消息;
+* 用数据库保存消息;
 * 分享您的改进！
 
 ### 获取此示例
