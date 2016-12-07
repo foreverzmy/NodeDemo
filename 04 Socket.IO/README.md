@@ -1,6 +1,8 @@
 ## 基于socket.io的简单的聊天应用
 
-本文翻译自[socket.io官网](http://socket.io/)的[Get Started: Chat application](http://socket.io/get-started/chat/)，本文中对其中的程序略有改动，全部由ES6实现，同事添加了个人的注释。由于功力不够，对翻译中的错误还请指正。
+翻译：[ForeverZ](http://foreverz.cn/)
+
+本文翻译自[socket.io官网](http://socket.io/)的[Get Started: Chat application](http://socket.io/get-started/chat/)，文中对其中的程序略有改动，全部由ES6实现，同时添加了一些注释。由于功力不够，翻译中出现的错误还请指正。
 
 以下是翻译内容：
 
@@ -69,13 +71,13 @@ http.listen(3000, () => {
 
 ###访问HTML
 
-到目前为止，我们在`index.js`中调用了`res.send`并传递了一个HTML字符串。如果把我们整个应用程序的HTML都放在这里，那会看起来十分混乱。因此，我们创建一个`index.html`文件并索引它。
+到目前为止，我们在`index.js`中调用了`res.send`并传递了一个HTML字符串。如果把我们整个应用程序的HTML都放在这里，那会看起来十分混乱。因此，我们创建一个`index.html`文件并引入它。
 
 让我们使用`sendFile`重构我们的路由处理程序：
 
 ```javascript
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`);
 });
 ```
 接着使用以下内容填充`index.html`：
@@ -104,7 +106,7 @@ app.get('/', function(req, res){
   </body>
 </html>
 ```
-如果你重新启动进程(通过点击 Control+C 并且再次运行`node index`)并且刷新页面会看到如下页面：
+如果你重新启动进程(通过点击 Control+C 并再次运行`node index`)然后刷新窗口会看到如下页面：
 
 ![](http://oef1ordmv.bkt.clouddn.com/985FgSH2HQ.png)
 
@@ -112,7 +114,7 @@ app.get('/', function(req, res){
 
 Socket.IO由两部分组成：
 
-* 整合(或依托于)Node.js HTTP Server上的服务器:`socket.io`
+* 整合(或依托于)Node.js HTTP Server的服务器:`socket.io`
 * 在浏览器端加载的客户端库:`socket.io-client`
 
 在开发过程中，`socket.io`会自动为我们服务客户端，现在我们只需要安装一个模块：
@@ -140,6 +142,7 @@ http.listen(3000, function(){
   console.log('listening on *:3000');
 });
 ```
+
 注意，我通过传递`http`(HTTP服务器)来初始化`socket.io`的一个新实例，然后监听sockets的`connection`连接事件，并将其记录到控制台。
 
 现在在`index.html`中，`</body>`前添加以下代码段：
@@ -147,14 +150,15 @@ http.listen(3000, function(){
 ```HTML
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io();
+  const socket = io();
 </script>
 ```
+
 加载`socket.io-client`会暴露一个全局`io`并连接。
 
 注意，当我调用`io()`时，我没有指定任何URL，因为他默认尝试连接到提供页面的主机。
 
-如果你现在重新加载服务器和网站，你会看到控制台打印“a user connected”。
+如果你现在重新加载服务器和网站，你会看到控制台打印`a user connected`。
 尝试打开多个页面，你会看到以下消息：
 
 ![](http://oef1ordmv.bkt.clouddn.com/F5EBcTVDcd.png)
@@ -162,28 +166,29 @@ http.listen(3000, function(){
 每个socket也会触发一个特殊的`disconnect`事件。
 
 ```javascript
-io.on('connection', function(socket){
+io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.on('disconnect', function(){
+  socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 });
 ```
+
 然后如果你刷新页面几次，你就会看到：
 
 ![](http://oef1ordmv.bkt.clouddn.com/bOmy6xrJmi.png)
 
 ### Emitting事件
 
-Socket.IO背后的主要思想是你可以接受和发送你想要的任何事件、任何你想要的数据。任何可以编码为JSON的对象都可以，也支持二进制数据。
+Socket.IO背后的主要思想是你可以接受和发送你想要的任何事件、任何数据。任何可以编码为JSON的对象都可以，也支持二进制数据。
 
-在用户键入消息时，我们让服务端得到它作为一个聊天消息事件，`index.html`的`script`部分应如下所示：
+当用户键入消息时，我们让服务端得到它并作为一个聊天消息事件，`index.html`的`script`部分应如下所示：
 
 ```HTML
 <script src="/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-  var socket = io();
+  const socket = io();
   $('form').submit(function(){
     socket.emit('chat message', $('#m').val());
     $('#m').val('');
@@ -195,9 +200,9 @@ Socket.IO背后的主要思想是你可以接受和发送你想要的任何事�
 并且在`index.js`中我们打印出来`chat message`事件:
 
 ```javascript
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    console.log(`message: ${msg}`);
   });
 });
 ```
@@ -218,7 +223,7 @@ io.emit('some event', { for: 'everyone' });
 如果你想向每个人发送一条不包含某个socket的消息，我们有`broadcast`标志：
 
 ```javascript
-io.on('connection', function(socket){
+io.on('connection', (socket) => {
   socket.broadcast.emit('hi');
 });
 ```
@@ -226,8 +231,8 @@ io.on('connection', function(socket){
 在这种情况下，为了简单起见，我们向包括发消息者在内的所有人发送消息：
 
 ```javascript
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
 });
@@ -243,13 +248,13 @@ io.on('connection', function(socket){
     $('#m').val('');
     return false;
   });
-  socket.on('chat message', function(msg){
+  socket.on('chat message', (msg) => {
     $('#messages').append($('<li>').text(msg));
   });
 <\/script>
 ```
 
-这样大约20行代码就完成了我们的聊天程序，看起来应该是这个样子：
+这样大约20行代码就完成了我们的聊天程序，看起来应该是下面这样：
 
 ![](http://oef1ordmv.bkt.clouddn.com/b.gif)
 
