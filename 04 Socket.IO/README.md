@@ -276,9 +276,9 @@ io.on('connection', function(socket){
 
 你可以在Github上找到：
 [原版DEMO](https://github.com/rauchg/chat-example)
+[我的DEMO](https://github.com/zmyforever1/NodeDemo/tree/master/04%20Socket.IO)
 
 ```git
 $ git clone https://github.com/guille/chat-example.git
 ```
 
-[我的DEMO](https://github.com/zmyforever1/NodeDemo/tree/master/04%20Socket.IO)
