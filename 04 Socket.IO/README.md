@@ -1,20 +1,26 @@
 ## 基于socket.io的简单的聊天应用
 
-本文翻译自[socket.io官网](http://socket.io/)的[Get Started: Chat application](http://socket.io/get-started/chat/)，对程序略有改动，由于功力不够，翻译中有错误还请指正。
+本文翻译自[socket.io官网](http://socket.io/)的[Get Started: Chat application](http://socket.io/get-started/chat/)，本文中对其中的程序略有改动，全部由ES6实现，同事添加了个人的注释。由于功力不够，对翻译中的错误还请指正。
 
-在本指南中，我们将创建一个简单的聊天应用，它几乎不需要Node.js或者Socket.IO的基础知识，所以它是所有用户的理想选择。
+以下是翻译内容：
+
+在本指南中，我们将创建一个简单的聊天应用，它几乎不需要`Node.js`或者`Socket.IO`的基础知识，所以它是所有用户的理想选择。
 
 ###　简介
 
-使用流行的web应用程序栈，如LAMP(PHP)编写聊天应用程序历来非常困难。它包括轮询更改服务器和记录时间戳，所以它会慢的多。
+使用流行的web应用程序栈，如LAMP(PHP)，编写聊天应用程序历来非常困难。它包括轮询更改服务器和记录时间戳，因此它会慢的多。
+
 Sockets一直以来是构建大多数实时聊天系统的解决方案，在客户端和服务器之间提供双向通信信道。
+
 这意味着服务器可以将消息推送到客户端，我们的想法是：每当你发一条信息，服务器会接收它并推送给其它连接的客户端。
 
 ###　web框架
 
-第一个目标是建立一个简单的HTML页面，提供一个表单和一个消息列表，我们将使用Node.js的web框架express做这一步，确保Node.js已安装。
+第一个目标是建立一个简单的HTML页面，提供一个表单和一个消息列表，我们将使用Node.js的web框架`express`做这一步，确保Node.js已安装。
 
-首先创建一个package.json清单文件来描述项目，我们建议你把它放在一个专门的空目录(我把它命名为chat-example)。
+首先创建一个`package.json`清单文件来描述项目，我们建议你把它放在一个专门的空目录(我把它命名为`chat-example`)。
+
+> 注：在我的仓库中，我命名为`04 Socket`
 
 ```json
 {
@@ -31,37 +37,35 @@ Sockets一直以来是构建大多数实时聊天系统的解决方案，在客�
 npm install --save express@4.10.2
 ```
 
+> 注：这里是直接指定了安装4.10.2版本的express，也可以不加版本号直接安装最新版本的express。
+
 现在express已经安装了，我们可以创建一个`index.js`文件来设置我们的应用程序。
 
 ```javascript
-var app = require('express')();
-var http = require('http').Server(app);
+const app = require('express')();
+const http = require('http').Server(app);
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
   res.send('<h1>Hello world</h1>');
 });
 
-http.listen(3000, function(){
+http.listen(3000, () => {
   console.log('listening on *:3000');
 });
 ```
 这翻译为以下几步：
 
-1.将express初始化为可以用来提供给HTTP服务的处理函数:`app`(见第2行)。
-2.定义了一个路由处理程序，当访问我们的网站首页时调用。
-3.让http服务监听3000端口。
+1. 将express初始化为可以用来提供给HTTP服务的处理函数:`app`(见第2行)。
+2. 定义了一个路由处理程序，当访问我们的网站首页时调用。
+3. 让http服务监听3000端口。
 
 如果你运行`node index.js`，你会看到如下内容：
 
-<div style='text-align:center'>
 ![](http://oef1ordmv.bkt.clouddn.com/LsMcTduUg.png)
-</div>
 
 并且你的浏览器访问`http://localhost:3000`时：
 
-<div style='text-align:center'>
 ![](http://oef1ordmv.bkt.clouddn.com/AOuGSHy7QM.png)
-</div>
 
 ###访问HTML
 
