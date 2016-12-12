@@ -3,18 +3,25 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/index.html`);
+    console.log(module.filename)
+    res.sendFile(`../views/index.html`);
 });
+// 在线用户
+var onlineUser = {};
+// 在线人数
+var onlineCount = 0;
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    // 监听新用户加入
+    socket.on('login', (obj) => {
+        console.log(obj);
+    })
 
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
 
     socket.on('chat message', function(msg) {
-        console.log(`message: ${msg}`);
         io.emit('chat message', msg);
     });
 });

@@ -12,13 +12,13 @@
 
 说明：使用模板引擎可以更方便的编写HTML文件，而且可以更好地处理后台数据。
 
-
-## 08.js：
+## 05.js：使用express应用生成器构建项目
 
 说明：
 
 * express应用生成器
 通过应用生成器工具`express`可以快速创建一个应用的骨架。
+
 ```javascript
 $ npm install express-generator -g
 ```
@@ -39,7 +39,7 @@ $ npm install
 ```
 
 启动应用
-```javascript
+```npm
 $ DEBUG=myapp npm start //MacOS/Linux
 set DEBUG=myapp & npm start //Windows
 ```

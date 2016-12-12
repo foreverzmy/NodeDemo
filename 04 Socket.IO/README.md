@@ -69,6 +69,8 @@ http.listen(3000, () => {
 
 ![](http://oef1ordmv.bkt.clouddn.com/AOuGSHy7QM.png)
 
+> 注：我的仓库代码监听的是9000端口，因此需要访问`http://localhost:9000`，以下如是。
+
 ###访问HTML
 
 到目前为止，我们是在`index.js`中调用了`res.send`并传递了一个HTML字符串。但如果把我们整个应用的HTML都放在这里，那会看起来十分混乱。因此，我们创建一个`index.html`文件并引入它。
@@ -106,7 +108,7 @@ app.get('/', (req, res) => {
   </body>
 </html>
 ```
-如果你重新启动进程(通过点击 Control+C 并再次运行`node index`)然后刷新窗口就会看到如下页面：
+如果你重新启动进程(通过点击 Control+C 并再次运行`node index`)，然后刷新窗口就会看到如下页面：
 
 ![](http://oef1ordmv.bkt.clouddn.com/985FgSH2HQ.png)
 
@@ -123,7 +125,7 @@ Socket.IO由两部分组成：
 npm install --save socket.io
 ```
 
-这会安装模块并添加依赖关系到`package.json`。现在，我们编辑`index.js`来添加：
+这会安装模块并添加依赖关系到`package.json`。现在，我们在`index.js`添加下面内容：
 
 ```javascript
 const app = require('express')();
