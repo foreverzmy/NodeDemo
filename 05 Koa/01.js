@@ -1,5 +1,4 @@
 // 简单koa服务器
-
 const Koa = require('koa');
 const app = new Koa();
 

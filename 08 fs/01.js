@@ -1,5 +1,5 @@
-var fs = require('fs');
+const {readFile} = require('fs');
 
-var filehandle = fs.readFile('data/data.txt', function(err, data) {
+let filehandle = readFile('data/data.txt', function(err, data) {
     console.log(data.toString());
 })
