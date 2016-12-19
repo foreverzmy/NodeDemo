@@ -1,0 +1,15 @@
+{
+  "name": "log",
+  "version": "1.0.0",
+  "description": "log4js 是 Node.js 日志处理中的数一数二的模块。比起console或者 TJ 的 debug 有其优势，尤其针对投入生产的 Node.js 项目来说下面这些是不可少的：",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "log4js": "^1.0.1"
+  }
+}

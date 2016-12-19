@@ -11,11 +11,11 @@ let db = {
 };
 
 let pets = {
-    list: async() => {
+    list: function*() {
         var names = Object.keys(db);
         this.body = 'pets: ' + names.join(', ');
     },
-    show: async(name) => {
+    show: function*(name) {
         var pet = db[name];
         if (!pet) return this.throw('cannot find that pet', 404);
         this.body = pet.name + ' is a ' + pet.species;

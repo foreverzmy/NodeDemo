@@ -1,0 +1,2 @@
+[2016-12-19 10:35:00.204] [INFO] access - ::1 - - "GET / HTTP/1.1" 200 18 "" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36"
+[2016-12-19 10:35:49.144] [INFO] access - ::1 - - "GET / HTTP/1.1" 200 12 "" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36"
