@@ -1,5 +1,5 @@
 // koa多路径
-const Koa = require('koa');
+import Koa from 'koa';
 const app = new Koa();
 
 app
@@ -19,6 +19,10 @@ app
         ctx.body = 'Internal server error!';
     })
 
-app.listen(9000, () => {
-    console.log('Server running at post 9000!')
-});
+app
+    .on('error', (err) => {
+        console.log('server error', err);
+    })
+    .listen(9000, () => {
+        console.log('Server running at post 9000!')
+    });

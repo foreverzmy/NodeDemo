@@ -73,10 +73,35 @@ nodemon start
 打开浏览器，访问页面
 ```
 
-## 03：koa2多路径处理
+## 03：koa2中的cookie
+
+## 04：koa2多路径处理
 
 koa2可以使用多路径处理简单的页面跳转。
 
-## 04：koa2复杂路由处理
+## 05：koa2复杂路由处理
 
 当路由比较复杂是就需要koa-router插件来进行处理了
+
+使用API
+
+```javascript
+import Router from 'koa-router';
+const router = new Router();
+router
+  .get('/', async ctx => {
+    ctx.body = 'Hello World!';
+  })
+  .post('/users', async ctx => {
+    // ... 
+  })
+  .put('/users/:id', async ctx => {
+    // ... 
+  })
+  .del('/users/:id', async ctx => {
+    // ... 
+  });
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+```
