@@ -1,24 +1,30 @@
 // koa多路径
-const Koa = require('koa');
+import jade from 'jade'
+import Koa from 'koa'
+import views from 'koa-views'
+import Router from 'koa-router'
+
+import index from './routes/index.js'
+import users from './routes/users.js'
+
 const app = new Koa();
+const router = new Router();
 
 app
-    .use(async(ctx, next) => {
-        if (ctx.path !== '/')
-            return await next();
-        ctx.body = 'We are at home!';
-    })
-    .use(async(ctx, next) => {
-        if (ctx.path !== '/404')
-            return await next();
-        ctx.body = 'Page not found!';
-    })
-    .use(async(ctx, next) => {
-        if (ctx.path !== '/500')
-            return await next();
-        ctx.body = 'Internal server error!';
-    })
+    .use(views(`${__dirname}/views`, {
+        extension: 'jade',
+    }))
+    .use(router.routes())
+    .use(router.allowedMethods())
 
-app.listen(9000, () => {
-    console.log('Server running at post 9000!')
-});
+router
+    .use('/', index.routes(), index.allowedMethods())
+    .use('/users', users.routes(), users.allowedMethods())
+
+app
+    .on('error', (err, ctx) => {
+        console.log(err, ctx);
+    })
+    .listen(9000, () => {
+        console.log('Server running at post 9000!')
+    });

@@ -106,4 +106,16 @@ app
   .use(router.allowedMethods())
 ```
 
-## 06：
+## 06：koa模板引擎
+
+在koa中使用jade模板引擎
+
+## 07：使用koa-generator创建koa2项目
+
+```npm
+$ npm i -g koa-generator 
+$ koa2 myApp && cd myApp
+$ npm install
+$ npm start
+```
+此时访问3000端口就可以了。
