@@ -38,7 +38,7 @@ router
 
 // 处理POST请求
 router
-    .post('/users', bodyParser(), async ctx => {
+    .post('/users', async ctx => {
         let body = ctx.request.body;
         console.log(body);
         ctx.body = obj[body.key];
@@ -46,13 +46,14 @@ router
 
 // 处理PUT请求
 router
-    .put('/users', bodyParser(), async ctx => {
+    .put('/users', async ctx => {
         let body = ctx.request.body;
         console.log(body);
         ctx.body = obj[body.key];
     })
 
 app
+    .use( bodyParser())
     .use(router.routes())
     .use(router.allowedMethods())
     .on('error', (err) => {
