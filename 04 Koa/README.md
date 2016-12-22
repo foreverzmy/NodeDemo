@@ -106,9 +106,36 @@ app
   .use(router.allowedMethods())
 ```
 
-## 06：koa模板引擎
+## 06：koa-views模板中间件
+
+[koa-views](https://github.com/queckezz/koa-views)
+
+```npm
+$ npm install koa-views@next
+```
+
+## API
+
+```js
+views(root, opts)
+```
+
+* root：视图所在位置，必须是绝对路径。
+* opts：可选。
+
+|opts|用法|作用|
+|----|---|----|
+|extension|extension: 'jade'|设置视图默认扩展名|
+|map|map:{html:'jade'}|文件扩展名映射|
+|engineSource|engineSource: {foo: () => Promise.resolve('bar')}|替换扩展名为bar|
+|options|...|传递参数|
 
 在koa中使用jade模板引擎
+
+```javascript
+import views from 'koa-views'
+app.use(views(__dirname, { extension: 'jade',... }))
+```
 
 ## 07：使用koa-generator创建koa2项目
 
@@ -118,5 +145,6 @@ $ koa2 myApp && cd myApp
 $ npm install
 $ npm start
 ```
+
 此时访问3000端口就可以了。
 

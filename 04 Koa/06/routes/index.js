@@ -7,7 +7,7 @@ router.get('/', async ctx => {
         title: 'koa-views',
         name: 'forever'
     };
-    await ctx.render('index', {})
+    await ctx.render('index')
 })
 
 export default router;

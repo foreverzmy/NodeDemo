@@ -53,7 +53,7 @@ router
     })
 
 app
-    .use( bodyParser())
+    .use(bodyParser())
     .use(router.routes())
     .use(router.allowedMethods())
     .on('error', (err) => {

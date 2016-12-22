@@ -7,9 +7,11 @@ import static2 from 'koa-static2'
 
 import index from './routes/index.js'
 import users from './routes/users.js'
+import config from './routes/config'
 
 const app = new Koa();
 const router = new Router();
+
 
 // 设置静态文件路径
 app.use(static2('public', `${__dirname}/public`));

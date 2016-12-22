@@ -1,11 +1,13 @@
-var router = require('koa-router')();
+import Router from 'koa-router';
 
-router.get('/', async function (ctx, next) {
-  ctx.state = {
-    title: 'koa2 title'
-  };
+const router = new Router();
 
-  await ctx.render('index', {
-  });
+router.get('/', async function(ctx, next) {
+    ctx.state = {
+        title: 'koa2 title'
+    };
+
+    await ctx.render('index', {});
 })
-module.exports = router;
+
+export default router;

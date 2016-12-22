@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1 user
+  p version:#{version}
+  p now:#{filters.format(now())}
+  - let cb=callback();
+  p callbackGen#{callbackGen()()}
+  p callback:#{cb()}
+  ul
+    each val in users
+      li #{val.name}
   a(href="/") index
