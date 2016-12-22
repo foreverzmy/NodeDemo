@@ -46,10 +46,11 @@ app
     })))
     .use(convert(flash()))
     .use(convert(scheme(config.schemeConf)))
-
-app.use(views(__dirname + '/views', {
-    extension: 'jade'
-}));
+    .use(convert(routerCache(app, config.routerCacheConf)))
+    .use(convert(gzip()))
+    .use(views(renderConf, {
+        extension: 'jade'
+    }));
 
 // logger
 app.use(async(ctx, next) => {
