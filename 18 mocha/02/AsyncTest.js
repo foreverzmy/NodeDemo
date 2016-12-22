@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-describe('file',()=>{
+describe('File',()=>{
     describe('#readFile()',()=>{
         it('should read test.ls without error',(done)=>{
             fs.readFile('test.ls',(err)=>{
