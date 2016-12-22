@@ -10,11 +10,28 @@
 
 mocha是流行的Node.js测试框架，同时支持TDD、BDD和exports风格的测试，并且支持许多优秀的断言库，支持异步和同步的测试、支持多种方式导出结果，同时支持浏览器端的测试。
 
+win需全局安装mocha：
+
+```npm
+npm i -g mocha
+```
+ubuntu下需用apt安装mocha
+
+```linux
+sudo apt install mocha
+```
+
 常用的有`describe()`和`it()`：
 
-* describe:用来描述一组测试的目的或功能，可以嵌套。
-* it:用来描述测试的期望值，一个`describe`可以有多个`it`，一个`it`至少有一个断言。
+* describe(moduleName,testDetail):用来描述一组测试的目的或功能，可以嵌套,moduleName随意取名。
+* it(info,func):用来描述测试的期望值，一个`describe`可以有多个`it`，一个`it`至少有一个断言。info是文字说明，当测试错误时会打印出来。
 
-## 01.js:assert
+## 01:assert断言
 
-## 02.js:should
+* assert.equal(exp1,exp2):断言判断exp1结果是否等于exp2，这里采取的是`==`而不是`===`。
+
+## 02:Asyncchronous：异步代码调试
+
+在回调最深处传done，然后加`done()`表示结束。`done`表示从此处开始，一层层回调回去。
+
+一个it里面只能调用一次`done()`，所以多个异步测试应该用多个`it`.

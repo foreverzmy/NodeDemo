@@ -1,0 +1,14 @@
+{
+  "name": "mocha",
+  "version": "1.0.0",
+  "description": "单元测试时自动化测试中的一种，时针对程序模块来进行正确性检验的测试工作。程序单元是应用的最小的可测试部件。",
+  "main": "01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "should": "^11.1.2"
+  }
+}
