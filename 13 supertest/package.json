@@ -1,0 +1,20 @@
+{
+  "name": "supertest",
+  "version": "1.0.0",
+  "description": "supertest模块是一个HTTP断言库，使用它可以测试HTTP服务，如使用express、Koa搭建的服务等。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "supertest": "^2.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "co-supertest": "0.0.10",
+    "express": "^4.14.0",
+    "koa": "^1.2.4"
+  }
+}
