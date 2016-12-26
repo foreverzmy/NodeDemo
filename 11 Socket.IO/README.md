@@ -277,7 +277,7 @@ io.on('connection', (socket) => {
 
 你可以在Github上找到：
 [原版DEMO](https://github.com/rauchg/chat-example)
-、[我的DEMO](https://github.com/zmyforever1/NodeDemo/tree/master/04%20Socket.IO)
+、[我的DEMO](https://github.com/zmyforever1/NodeDemo/tree/master/11%20Socket.IO)
 
 原版DEMO的git地址：
 
