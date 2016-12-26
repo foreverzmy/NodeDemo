@@ -4,9 +4,9 @@ const router = new Router();
 
 router.get('/', async function(ctx, next) {
   ctx.state = {
-    title: 'koa2 title'
+    title: 'koa2 users'
   };
-  await ctx.render('index', {});
+  await ctx.render('users', {});
 })
 
 export default router;

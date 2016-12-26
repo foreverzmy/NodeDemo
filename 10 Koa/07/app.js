@@ -13,7 +13,7 @@ const router = new Router();
 // middlewares
 app
   .use(static2('public', `${__dirname}/public`))
-  .use(views(`$(__dirname)/views`, {
+  .use(views(`${__dirname}/views`, {
     extension: 'jade'
   }));
 
