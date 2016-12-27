@@ -1,29 +1,29 @@
-import socketio from 'socket.io'
+import SocketIO from 'socket.io'
 
-export default charServer;
+export default chatServer;
 
-function charServer(server) {
-  const io = socketio(server);
-  io.set('log level', 1);
+function chatServer(server) {
+  const io = new SocketIO(server);
+  // io.set('log level', 1);
   // 定义每个用户连接的处理逻辑
-  io.on('connection', (socket) => {
-    // 在用户连接上来时赋予其一个访客名
-    onlineCount = assignGuestName(socket, onlineCount, nickNames, namesUSed);
-    // 用户连接时放入聊天室Lobby
-    joinRoom(socket, 'Lobby');
-    // 处理用户的消息
-    handleMessageBroadcasting(socket, nickNames);
-    // 处理用户更名
-    handleNameChangeAttempts(socket, nickNames, namesUesd);
-    // 处理聊天室的变更或创建
-    handleRoomJoining(socket);
-    // 用户发出请求时，向其提供已经被占用的聊天室的列表
-    socket.on('rooms', () => {
-      socket.emit('rooms', io.sockets.manager.rooms);
-    });
-    // 定义用户断开连接后的清除逻辑
-    handleClientDisconnection(socket, nickNames, namesUesd);
-  });
+  // io.on('connection', (socket) => {
+  // 在用户连接上来时赋予其一个访客名
+  // onlineCount = assignGuestName(socket, onlineCount, nickNames, namesUSed);
+  // 用户连接时放入聊天室Lobby
+  // joinRoom(socket, 'Lobby');
+  // 处理用户的消息
+  // handleMessageBroadcasting(socket, nickNames);
+  // 处理用户更名
+  // handleNameChangeAttempts(socket, nickNames, namesUesd);
+  // 处理聊天室的变更或创建
+  // handleRoomJoining(socket);
+  // 用户发出请求时，向其提供已经被占用的聊天室的列表
+  // socket.on('rooms', () => {
+  //   socket.emit('rooms', io.sockets.manager.rooms);
+  // });
+  // 定义用户断开连接后的清除逻辑
+  // handleClientDisconnection(socket, nickNames, namesUesd);
+  // });
 }
 
 // 在用户连接上来时赋予其一个访客名
@@ -33,10 +33,11 @@ function assignGuestName(socket, onlineCount, nickNames, namesUesd) {
   socket.emit('nameResult', { // 让用户知道他们的昵称
     success: true,
     name: name
-  })
+  });
   namesUesd.push(name); //存放已经被占用的昵称
   return onlineCount++; //昵称计数器
 }
+
 // 用户加入聊天室
 function joinRoom(socket, room) {
   // 让用户进入房间

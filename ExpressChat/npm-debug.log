@@ -9,7 +9,7 @@
 6 silly lifecycle chatrooms@0.0.1~prestart: no script for prestart, continuing
 7 info lifecycle chatrooms@0.0.1~start: chatrooms@0.0.1
 8 verbose lifecycle chatrooms@0.0.1~start: unsafe-perm in lifecycle true
-9 verbose lifecycle chatrooms@0.0.1~start: PATH: D:\Node\node_modules\npm\bin\node-gyp-bin;E:\NodeDemo\19 ExpressChat\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Git\cmd;D:\Node\;D:\JDK\bin;D:\JDK\jre\bin;C:\Program Files\ConEmu;D:\nginx-1.11.6;C:\Users\hzzmy\AppData\Roaming\npm;D:\Microsoft VS Code\bin
+9 verbose lifecycle chatrooms@0.0.1~start: PATH: D:\Node\node_modules\npm\bin\node-gyp-bin;E:\NodeDemo\19 ExpressChat\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Git\cmd;D:\Node\;D:\Redis\;D:\JDK\bin;D:\JDK\jre\bin;C:\Program Files\ConEmu;D:\nginx-1.11.6;C:\Users\hzzmy\AppData\Roaming\npm;D:\Microsoft VS Code\bin
 10 verbose lifecycle chatrooms@0.0.1~start: CWD: E:\NodeDemo\19 ExpressChat
 11 silly lifecycle chatrooms@0.0.1~start: Args: [ '/d /s /c', 'node start.js' ]
 12 silly lifecycle chatrooms@0.0.1~start: Returned: code: 1  signal: null
