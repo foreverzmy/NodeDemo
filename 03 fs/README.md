@@ -19,3 +19,27 @@ Node中的`res`对象也是可写数据流的一种，可以用`fs.createReadStr
 ```javascript
 fs.createReadStream('./image/image.jpg').pipe(res);
 ```
+
+## File Storage
+
+用文件存放系统数据。一般用这种存储方式保存程序的配置信息，也可以用它做数据的持久化保存，这些数据在程序和服务器重启后依然有效。
+
+`process.argv`会获取输入的命令,例如`node app.js`，返回命令行脚本的各个参数组成的数组。
+
+这是一个命令行版任务存储列表工具。
+
+可以用以下命令添加/查看任务。
+
+```
+$ node app.js add Buy some hats.
+Saved
+$ node app.js list
+Buy some hats.
+$ node app.js 18:00 dinner.
+Saved.
+$ node app.js list
+Buy some hats.
+18:00 dinner.
+$ node app.js help
+Usage: node.exe list|add [taskDescription].
+```
