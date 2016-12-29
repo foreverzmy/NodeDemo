@@ -1,0 +1,17 @@
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS forever;
+CREATE DATABASE forever CHARSET=UTF8;
+USE forever;
+
+CREATE TABLE users(
+  uid INT PRIMARY KEY AUTO_INCREMENT,
+  uname VARCHAR(32),
+  upwd VARCHAR(32)
+);
+INSERT INTO users VALUES(
+  NULL, 'tom', '123'
+);
+INSERT INTO users VALUES(
+  NULL, 'mary', '456'
+);
+SELECT * FROM users;
