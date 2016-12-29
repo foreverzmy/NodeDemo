@@ -42,6 +42,7 @@ function loadOrInitTashArray(file, cb) {
     }
   })
 }
+
 // 列出任务
 function listTasks(file) {
   loadOrInitTashArray(file, tasks => {
@@ -50,6 +51,7 @@ function listTasks(file) {
     }
   })
 }
+
 // 将任务存储到文件中
 function storeTasks(file, tasks) {
   fs.writeFile(file, JSON.stringify(tasks), 'utf8', err => {
@@ -57,6 +59,7 @@ function storeTasks(file, tasks) {
     console.log('Saves!');
   })
 }
+
 // 添加任务
 function addTasks(file, taskDescription) {
   loadOrInitTashArray(file, tasks => {
