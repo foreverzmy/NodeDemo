@@ -1,0 +1,14 @@
+{
+  "name": "redisdemo",
+  "version": "1.0.0",
+  "description": "Redis是一个是一个高性能的key-value数据库。Redis是完全在RAM中保存数据的数据库，并在磁盘中记录数据的变化。这样做的缺点是它的存储空间有限，但好处是数据操作非常快。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "redis": "^2.6.3"
+  }
+}
