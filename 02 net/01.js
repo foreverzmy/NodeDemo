@@ -5,12 +5,12 @@ win下需要在windows功能中开启Telnet客户端
 */
 const net = require(`net`);
 
-const chatServer = net.createServer();
+const chatServer = net.Server();
 
 chatServer
-    .on(`connection`, (client) => {
-        client.write(`Hi\n`);
-        client.write(`Bye\n`);
-        client.end();
-    })
-    .listen(9000);
+  .on(`connection`, (client) => {
+    client.write(`Hi\n`);
+    client.write(`Bye\n`);
+    client.end();
+  })
+  .listen(9000);

@@ -43,10 +43,51 @@ GET color
 
 `lpush`向链表中添加值，`lrange`获取参数`start`和`end`范围内的链表元素。如`03.js`中`start`为`2`，`end`为`4`。
 
-## 04.js：Redis集合
+## 04.js：Redis set集合
 
 Redis集合是一组无序的字符串组。集合获取数据的性能比链表好。它获取集合成员所用的时间取决于集合的大小(时间复杂度O(1))。
 
 集合中的元素必须是唯一的，如果把两个相同的值存到集合中，第二次尝试会被忽略。
 
 `sadd`尝试将值添加到集合中，`smembers`返货存储在集合中的值。
+
+## 05.js：Redis zset有序集合
+
+Redis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员。
+
+不同的是每个元素都会关联一个double类型的`score`。redis正是通过分数来为集合中的成员进行从小到大的排序。
+
+zset的成员是唯一的,但`score`却可以重复。
+
+```javascript
+client.zadd('key', score, member, redis.print);
+client.zrangebyscore('key', start, end, (err, members) => {
+  if (err) throw err;
+  console.log(members);
+});
+```
+
+## 06.js：发布订阅实现简单聊天服务器
+
+Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。
+
+因此需要建立两个信道，一个用来发布消息，一个用来预定消息。
+
+`client.subscribe(room)`：用来订阅给定的一个或多个频道的信息。
+`publicsher.publish(room,message)`：用来将信息发送到指定的频道。
+
+# 提升性能
+
+在使用`redis`模块时，可以考虑使用`hiredis`模块，这个模块会显著提升Redis的性能，因为它充分利用了官方的hiredis C语言库。如果装了`hiredis`，会自动使用hiredis替代它的javascript实现。
+
+安装：
+
+```npm
+$ npm i hiredis
+```
+
+因为hiredis库是用C代码编译而成，而Node的内部API偶尔会修改，所以升级了Node.js后，要重新编译hiredis：
+
+```npm
+$ npm rebuild hiredis
+```
