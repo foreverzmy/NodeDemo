@@ -10,9 +10,9 @@ const conn = mysql.createConnection({
 });
 
 // 增
-function insert() {
-  let sql = 'INSERT INTO users VALUES(NULL, "smith", "888")';
-  conn.query(sql, (err, result) => {
+function insert(name, age) {
+  let sql = 'INSERT INTO users VALUES(NULL,?,?)';
+  conn.query(sql, [name, age], (err, result) => {
     // 查看执行结果
     if (err) throw err;
     console.log(`changed ${result.affectedRows} rows`);
@@ -55,7 +55,7 @@ function select() {
   });
 }
 
-// insert();
+insert('forever', '22');
 // delet();
 // update();
 select();

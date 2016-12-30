@@ -16,6 +16,7 @@ let sql = `CREATE TABLE IF NOT EXISTS work(
   description LONGTEXT
 )`;
 
+// 数据库建表操作
 db.query(sql, (err) => {
   if (err) throw err;
   console.log('create database success.')

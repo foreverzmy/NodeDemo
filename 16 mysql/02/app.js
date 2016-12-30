@@ -8,6 +8,7 @@ import delet from './lib/delete'
 
 const server = http.Server();
 
+// http请求路由
 server
   .on('request', (req, res) => {
     switch (req.method) {

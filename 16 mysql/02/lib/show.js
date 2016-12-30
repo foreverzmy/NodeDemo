@@ -1,7 +1,6 @@
-import workHitlistHtml from './workHitlistHtml'
-import { workFormHtml } from './timetrack'
-import { sendHtml } from './timetrack'
+import { workFormHtml, sendHtml, workHitlistHtml } from './timetrack'
 
+// 获取工作记录
 const show = function(db, res, showArchived) {
   let sql = 'SELECT * FROM work WHERE archived=? ORDER BY date DESC';
   let archiveValue = showArchived ? 1 : 0;
@@ -14,6 +13,7 @@ const show = function(db, res, showArchived) {
   })
 };
 
+// 显示归档的工作记录
 const showArchived = function(db, res) {
   show(db, res, true);
 }
