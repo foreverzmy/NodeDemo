@@ -51,4 +51,5 @@ function admin(req, res, next) {
       res.end(JSON.stringify(['tobi', 'loki', 'jane']));
       break;
   }
+  next();
 }

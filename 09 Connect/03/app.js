@@ -1,6 +1,7 @@
 const connect = require('connect');
 const router = require('./router');
 
+// 定义路由的对象
 var routes = {
   GET: {
     '/users': function(req, res) {

@@ -18,5 +18,30 @@ connect有一个挂载的概念，可以给中间件或整个程序定义一个�
 
 #03：构建路由中间件
 
-在Web
+在Web程序中，路由是个至关重要的概念。简而言之，它会把请求URL映射到实现业务逻辑的函数上。
 
+## 04：错误处理
+
+错误处理中间件函数必须接受四个参数：err、req、res和next。
+
+## 05：中间件
+
+### cookie-parser
+
+connect的中间件全部分离出来成为单独的包，所以要先安装对应得包才能使用中间件。
+
+`cookie-paeser`中间件模块支持常规的cookie、签名cookie和特殊的JSON cookie。`req.cookies`默认是用常规未签名cookie组装而成的。
+
+`cookie-paeser`不会为设定出站cookie提供任何帮助，所以要使用`res.setHeader()`函数来设定名为`Set-Cookie`的响应头来设置cookie。
+
+### body-parser
+
+所有的web程序都需要接受用户的输入。`body-parser`组件提供了`req.body`属性，可以用来解析JSON、x-www-form-urlencoded和multipart/form-data请求。如果是multipart/form-data请求，比如文件上传，则还有`req.files`对象。
+
+### limit
+
+`limit`组件的作用是帮助过滤巨型的请求，比如一个用户上传图片时发送了一张未经压缩的RAW图片，有几百兆的数据，这时候就会造成线程堵塞，使程序不能继续运行。
+
+## method-override
+
+浏览器的`<form>`只能POST和GET，所以当需要使用PUT和DELETE时就会出现问题。常见的解决方法是添加一个`<input type='hidden'>`，将其值设置为要用的方法名，然后让服务器检查那个值并“假装”它是这个请求的请求方法。`method-override`就是服务器这边的解决方法。
