@@ -1,3 +1,4 @@
+// 用connect搭建服务器
 const connect = require('connect');
 
 const app = connect();
