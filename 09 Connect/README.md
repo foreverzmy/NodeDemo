@@ -45,3 +45,7 @@ connect的中间件全部分离出来成为单独的包，所以要先安装对�
 ## method-override
 
 浏览器的`<form>`只能POST和GET，所以当需要使用PUT和DELETE时就会出现问题。常见的解决方法是添加一个`<input type='hidden'>`，将其值设置为要用的方法名，然后让服务器检查那个值并“假装”它是这个请求的请求方法。`method-override`就是服务器这边的解决方法。
+
+## cookie会话管理
+
+`cookie-session`中间件提供创建新的cookie会话，这个中间件将`session`附加到`req`。

@@ -12,8 +12,10 @@
     "body-parser": "^1.15.2",
     "connect": "^3.5.0",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.2",
     "limit": "0.0.1",
     "logger": "0.0.1",
-    "method-override": "^2.3.7"
+    "method-override": "^2.3.7",
+    "serve-favicon": "^2.3.2"
   }
 }
