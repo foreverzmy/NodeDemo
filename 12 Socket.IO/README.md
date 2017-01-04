@@ -1,6 +1,7 @@
 ## 基于socket.io的简单的聊天应用
 
-翻译：[ForeverZ](http://foreverz.cn/)
+翻译：[Mervyn Zhang](http://foreverz.cn/)
+校对：金炜同学
 
 本文翻译自[socket.io官网](http://socket.io/)的[Get Started: Chat application](http://socket.io/get-started/chat/)，文中对其中的程序略有改动，全部由ES6实现，同时添加了一些注释。由于功力不够，翻译中出现的错误还请指正。
 
