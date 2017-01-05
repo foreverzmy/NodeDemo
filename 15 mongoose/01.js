@@ -37,7 +37,7 @@ Task.create([{
 
 // 查
 Task.find({ 'project': 'Bikeshed' }, (err, tasks) => {
-  for (var ii in tasks) {
+  for (let ii in tasks) {
     console.log(`ID:${tasks[ii]._id}`);
     console.log(tasks[ii].description);
   }
