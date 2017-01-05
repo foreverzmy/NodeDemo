@@ -12,10 +12,10 @@ router.get('/', async ctx => {
   let id = ctx.params.id;
   await Photo.findById(id, (err, photo) => {
     if (err) throw err;
-    let path = join(`${process.cwd()}/public/images`, 'nodejs-green.png');
+    let path = join(`${process.cwd()}/public`, photo.path);
     let opts = {
       headers: {
-        'Content-disposition': 'attachment; filename=nodejs-green.png'
+        'Content-disposition': `attachment; filename=${photo.name}`
       }
     };
     let download = new Download(ctx, opts);
