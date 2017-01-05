@@ -2,6 +2,7 @@ import Router from 'koa-router'
 import Photo from '../lib/photoModel'
 import path from 'path'
 import fs from 'fs'
+import asyncBusboy from 'async-busboy';
 
 const router = new Router();
 const join = path.join;
@@ -13,19 +14,23 @@ router.get('/', async ctx => {
   await ctx.render('upload')
 })
 
-router.post('/', async(ctx, next) => {
-  // let img = ctx.files.photo.image;
-  // let name = ctx.body.photo.name || img.name;
-  // let path = join(`${__dirname}/public/images`, img.name);
-  // fs.rename(img.path, path, err => {
-  //   if (err) throw next(err);
+router.post('/', async ctx => {
+  const { files, fields } = await asyncBusboy(ctx.req);
+  let filename = files[0].filename;
+  let filepath = files[0].path;
+  let name = fields.photo.name;
+  let path = join('/images', name);
+  await fs.createReadStream(filepath).pipe(fs.createWriteStream(`${process.cwd()}/public${path}`));
   Photo.create({
-      name: 'Node.js Logo',
-      path: 'http://nodejs.org/images/logos/nodejs-green.png'
-    }, err => {
-      if (err) return next(err);
-    })
-    // })
+    name: name,
+    path: path
+  }, err => {
+    if (err) throw err;
+  })
+  fs.unlink(filepath, err => {
+    if (err) throw err;
+  })
+
   ctx.redirect('/');
 })
 
