@@ -1,5 +1,6 @@
 # Redis数据库操作
 
+[win下下载地址](https://github.com/MSOpenTech/redis/releases)
 [Redis教程](http://www.runoob.com/redis/redis-tutorial.html)
 
 Redis是一个是一个高性能的key-value数据库。Redis是完全在RAM中保存数据的数据库，并在磁盘中记录数据的变化。这样做的缺点是它的存储空间有限，但好处是数据操作非常快。
