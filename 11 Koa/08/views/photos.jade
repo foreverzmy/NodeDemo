@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   p Koa stock photos application
+  p
     a(href="/upload") Upload
   div#photos
     -photos.forEach(photo=>{

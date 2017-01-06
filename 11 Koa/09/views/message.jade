@@ -1,0 +1,6 @@
+-if(locals.message){
+  -messages.forEach(message=>{
+    p(class=message.type)= message.string
+  -})
+  -removeMessages()
+-}

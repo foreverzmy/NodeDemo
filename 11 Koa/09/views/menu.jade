@@ -1,0 +1,10 @@
+-if(locals.user){
+  div#menu
+    span.name= user.name
+    a(href="/post", title="title") post
+    a(href="/logout") logout
+-}else{
+  div#menu
+    a(href="/login") login
+    a(href="/register") register
+-}
