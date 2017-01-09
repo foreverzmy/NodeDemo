@@ -1,10 +1,10 @@
-export default ctx => {
-  console.log(ctx)
-  ctx.message = function(msg, type = 'info') {
-    console.log(msg);
-    console.log(ctx.req.session);
+export default async ctx => {
+  ctx.locals.message = function(msg, type = 'info') {
+    let sess = ctx.session;
+    sess.messages = sess.messages || [];
+    sess.messages.push({ type: type, string: msg });
   }
-  ctx.error = function(msg) {
-    return ctx.message(msg, 'error');
+  ctx.locals.error = function(msg) {
+    return ctx.res.message(msg, 'error');
   }
 }

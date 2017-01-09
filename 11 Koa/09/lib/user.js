@@ -70,12 +70,12 @@ User.get = function(id, fn) {
 
 // 认证用户的名称和密码
 User.authenticate = function(name, pass, fn) {
-  User.getByName(name, (err, user) => {
+  User.getByName(name, (err, user) => { // 通过名称查找用户
     if (err) return fn(err);
-    if (!user.id) return fn();
+    if (!user.id) return fn(); // 用户不存在
     bcrypt.hash(pass, user.salt, (err, hash) => {
       if (err) return fn(err);
-      if (hash === user.pass) return fn(null, user);
+      if (hash === user.pass) return fn(null, user); // 匹配发现项
       fn();
     })
   })
