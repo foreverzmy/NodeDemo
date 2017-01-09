@@ -6,9 +6,6 @@ block content
   include ./message.jade
   
   form(action="/register" method="POST")
-    p
-      input(type="text" name='user[name]' placeholder="Username")
-    p
-      input(type="password" name='user[pass]' placeholder='Password')
-    p
-      input(type="submit" value="Sign Up")
+    p: input(type="text" name='user[name]' placeholder="Username")
+    p: input(type="password" name='user[pass]' placeholder='Password')
+    p: input(type="submit" value="Sign Up")

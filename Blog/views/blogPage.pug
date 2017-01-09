@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Blog
+  style.
+    .entry_title{font-weight:bold}
+    .entry_date{font-style:italic}
+    .entry_body{margin-bottom:1em}
+body
+  -for(let entry of entries){
+    div.entry_title= entry.title
+    div.entry_date= entry.data
+    div.entry_body= entry.body
+  -}
