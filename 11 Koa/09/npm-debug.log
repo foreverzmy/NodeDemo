@@ -1,21 +1,35 @@
 0 info it worked if it ends with ok
+<<<<<<< HEAD
 1 verbose cli [ 'D:\\Node\\node.exe',
 1 verbose cli   'D:\\Node\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'start' ]
 2 info using npm@3.10.10
 3 info using node@v7.2.1
+=======
+1 verbose cli [ 'H:\\software\\Node\\node.exe',
+1 verbose cli   'H:\\software\\Node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.10.9
+3 info using node@v6.9.2
+>>>>>>> bc3d4a99e7b2f41d7dbf08d336d4514cdfeab8c0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle sso@0.1.0~prestart: sso@0.1.0
 6 silly lifecycle sso@0.1.0~prestart: no script for prestart, continuing
 7 info lifecycle sso@0.1.0~start: sso@0.1.0
 8 verbose lifecycle sso@0.1.0~start: unsafe-perm in lifecycle true
+<<<<<<< HEAD
 9 verbose lifecycle sso@0.1.0~start: PATH: D:\Node\node_modules\npm\bin\node-gyp-bin;E:\NodeDemo\11 Koa\09\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Git\cmd;D:\Node\;D:\Redis\;D:\JDK\bin;D:\JDK\jre\bin;C:\Program Files\ConEmu;D:\nginx-1.11.6;C:\Users\hzzmy\AppData\Roaming\npm;D:\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\3.4\bin
 10 verbose lifecycle sso@0.1.0~start: CWD: E:\NodeDemo\11 Koa\09
+=======
+9 verbose lifecycle sso@0.1.0~start: PATH: H:\software\Node\node_modules\npm\bin\node-gyp-bin;H:\Demos\NodeDemo\11 Koa\09\node_modules\.bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;H:\software\Git\cmd;H:\software\Node\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\foreverz\AppData\Local\Microsoft\WindowsApps;C:\Users\foreverz\AppData\Roaming\npm;H:\software\jdk\bin;H:\software\jdk\jre\bin;H:\software\Microsoft VS Code\bin
+10 verbose lifecycle sso@0.1.0~start: CWD: H:\Demos\NodeDemo\11 Koa\09
+>>>>>>> bc3d4a99e7b2f41d7dbf08d336d4514cdfeab8c0
 11 silly lifecycle sso@0.1.0~start: Args: [ '/d /s /c', 'nodemon bin/run' ]
 12 silly lifecycle sso@0.1.0~start: Returned: code: 3221225786  signal: null
 13 info lifecycle sso@0.1.0~start: Failed to exec start script
 14 verbose stack Error: sso@0.1.0 start: `nodemon bin/run`
 14 verbose stack Exit status 3221225786
+<<<<<<< HEAD
 14 verbose stack     at EventEmitter.<anonymous> (D:\Node\node_modules\npm\lib\utils\lifecycle.js:255:16)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at EventEmitter.emit (events.js:191:7)
@@ -30,6 +44,22 @@
 18 error argv "D:\\Node\\node.exe" "D:\\Node\\node_modules\\npm\\bin\\npm-cli.js" "start"
 19 error node v7.2.1
 20 error npm  v3.10.10
+=======
+14 verbose stack     at EventEmitter.<anonymous> (H:\software\Node\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (H:\software\Node\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid sso@0.1.0
+16 verbose cwd H:\Demos\NodeDemo\11 Koa\09
+17 error Windows_NT 10.0.14393
+18 error argv "H:\\software\\Node\\node.exe" "H:\\software\\Node\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v6.9.2
+20 error npm  v3.10.9
+>>>>>>> bc3d4a99e7b2f41d7dbf08d336d4514cdfeab8c0
 21 error code ELIFECYCLE
 22 error sso@0.1.0 start: `nodemon bin/run`
 22 error Exit status 3221225786
