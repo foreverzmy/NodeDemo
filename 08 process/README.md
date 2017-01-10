@@ -32,3 +32,9 @@ uncaughtException是一个简单的智能处理程序，只能简答的把异常
  $ node 04.js hello world 
  //['.../node.exe','...\\NodeDemo\\08 process\\04','hello','world']
  ```
+
+ ## 05：子进程实现非最有斐波那契数列
+
+Node提供了child_process模块，在Node服务器或脚本内创建子进程。
+`cp.fork()`——用内置的IPC通道繁衍额外Node进程的特殊办法。 
+服务器用cp.fork()把斐波那契的计算逻辑放在一个单独的Node进程中，它会用process.send()向父进程返回报告。
