@@ -13,4 +13,6 @@ chatServer
     client.write(`Bye\n`);
     client.end();
   })
-  .listen(9000);
+  .listen(9000, () => {
+    console.log('Server running at port 9000.')
+  });
