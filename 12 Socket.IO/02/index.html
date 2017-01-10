@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Roload CSS</title>
+  <link rel="stylesheet" href="/style/header.css">
+  <link rel="stylesheet" href="/style/style.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    window.onload = function() {
+      const socket = io();
+      socket
+        .on('reload', () => {
+          window.location.reload();
+        })
+        .on('stylesheet', sheet => {
+          let link = document.createElement('link');
+          let head = document.getElementsByTagName('head')[0];
+          link.setAttribute('rel', 'stylesheet');
+          link.setAttribute('type', 'texy/css');
+          link.setAttribute('href', sheet);
+          head.appendChild(link);
+        })
+    }
+  </script>
+</head>
+
+<body>
+  <h1>This is our Awesome Webpage!</h1>
+  <div id="body">
+    <p>
+      If this file (<code>index.html</code>) is edited, then the server will send a message to the brower using Socket.IO telling it to refresh the page.
+    </p>
+    <p>
+      If eithrt og the stylesheet (<code>header.css</code> or <code>style.css</code>) are edited, then the server will send a message to the brower using Socket.IO telling it to dynamically reload the CSS,without refreshing the page.
+    </p>
+  </div>
+  <div id="event-log"></div>
+</body>
+
+</html>
