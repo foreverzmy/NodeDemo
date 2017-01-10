@@ -1,3 +1,4 @@
+// 读取、删除文件
 const { readFile, unlink } = require(`fs`);
 
 readFile('data/data.txt', function(err, data) {
