@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>tick</title>
+</head>
+
+<body>
+  Current server time is:<b><span id="time"></span></b>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // 连接SocketIO服务器
+    const socket = io();
+    // 收到message事件时,服务器已经把事件发送过来了
+    socket.on('message', time => {
+      document.getElementById('time').innerHTML = time;
+    })
+  </script>
+</body>
+
+</html>
