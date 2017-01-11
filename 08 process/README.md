@@ -2,6 +2,26 @@
 
 process是一个Node中的全局对象，包含当前进程的相关信息，不如传给它的参数和当前设定的环境变量
 
+process对象提供一系列属性，用于返回系统信息。
+
+* process.pid：当前进程的进程号。
+* process.version：Node的版本，比如v0.10.18。
+* process.platform：当前系统平台，比如Linux。
+* process.title：默认值为“node”，可以自定义该值。
+* process.argv：当前进程的命令行参数数组。
+* process.env：指向当前shell的环境变量，比如process.env.HOME。
+* process.execPath：运行当前进程的可执行文件的绝对路径。
+* process.stdout：指向标准输出。
+* process.stdin：指向标准输入。
+* process.stderr：指向标准错误。
+
+process对象提供以下方法：
+
+* process.exit()：退出当前进程。
+* process.cwd()：返回运行当前脚本的工作目录的路径。_
+* process.chdir()：改变工作目录。
+* process.nextTick()：将一个回调函数放在下次事件循环的顶部。
+
 ## 01.js：在node退出前调用代码。
 
 说明：此代码会在node退出循环前调用，时间循环在exit事件之后就不会再运行了，因此只有那些不需要回调的代码会被执行，这里的`setTimeout()`里的代码就不会被执行。
@@ -33,7 +53,17 @@ uncaughtException是一个简单的智能处理程序，只能简答的把异常
  //['.../node.exe','...\\NodeDemo\\08 process\\04','hello','world']
  ```
 
- ## 05：子进程实现非最有斐波那契数列
+## 05.js：控制台请求网页
+
+可以通过`process.argv`从控制台向程序传一个网页的地址，然后通过`stdout`输出流将网页显示在控制台。
+
+## 06.js：控制台输入输出
+
+本程序中要求用户在控制台中输入一个数字并要大于18才能进入项目。
+`process.stdout`用来控制标准输出，也就是在命令行窗口向用户显示内容。它的`write`方法等同于`console.log`。
+通过stdin从控制台读取数据，但是必须调用`process.stdin.resume()`表明脚本需要从`stdin`中读取数据。之后，stdin就会像其他可读流一样，在收到另外一个进程的输出，或用户在终端窗口中按键时发出data事件。 
+
+ ## 07：子进程实现非最优斐波那契数列
 
 Node提供了child_process模块，在Node服务器或脚本内创建子进程。
 `cp.fork()`——用内置的IPC通道繁衍额外Node进程的特殊办法。 
