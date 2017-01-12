@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "koa": "^2.0.0-alpha.7",
+    "koa-convert": "^1.2.0",
+    "koa-static": "^2.0.0",
     "serve-static-cache": "^1.2.0",
     "socket.io": "^1.7.1"
   }

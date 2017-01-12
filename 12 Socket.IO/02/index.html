@@ -18,8 +18,9 @@
           let link = document.createElement('link');
           let head = document.getElementsByTagName('head')[0];
           link.setAttribute('rel', 'stylesheet');
-          link.setAttribute('type', 'texy/css');
+          link.setAttribute('type', 'text/css');
           link.setAttribute('href', sheet);
+          link.setAttribute('media', 'all');
           head.appendChild(link);
         })
     }
