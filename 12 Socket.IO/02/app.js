@@ -24,8 +24,8 @@ app
     await next();
     createWatcher(file, mode);
   })
-  .use(convert(statc(__dirname)))
   // 将服务器设置为基本的静态文件服务器
+  .use(convert(statc(__dirname)))
 
 // 保存被检测的活动文件清单
 let wathcers = {};
@@ -42,7 +42,6 @@ function createWatcher(file, event) {
   //   }
   // });
   fs.watch(absolute, (e, filename) => {
-    console.log(e);
     if (e === 'change') {
       io.sockets.emit(event, file);
     }
