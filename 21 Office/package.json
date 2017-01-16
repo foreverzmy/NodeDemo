@@ -7,9 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "docx": "^1.0.0",
-    "office-clippy": "0.0.8"
+    "officegen": "^0.4.0"
   }
 }
