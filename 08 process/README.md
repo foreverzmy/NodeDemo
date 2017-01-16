@@ -44,14 +44,16 @@ uncaughtException是一个简单的智能处理程序，只能简答的把异常
 
 ## 04.js：获取命令参数
 
- `process.argv`会获取终端输入的命令并生成一个数组。数组中第一个是node程序地址，第二个是脚本文件地址，往后就是输入的命令参数。
+ `process.argv`会获取程序启动时的参数，是一个数组。数组中第一个是node程序的命令名，win下是node程序地址；第二个是当前js文件地址，从第三个参数其就是输入的命令参数。
 
- 例如：
+例如：
 
  ```javascript
  $ node 04.js hello world 
  //['.../node.exe','...\\NodeDemo\\08 process\\04','hello','world']
  ```
+
+ 在命令行中每个参数使用空格隔开。由于这些参数是一个个字符串，所以需要解析.
 
 ## 05：制作命令行工具
 
@@ -65,6 +67,8 @@ Node作为命令行工具需要在普通的Node程序上多三个步骤。
 "bin":{"command":"index.js"}
 ```
 * 最后在当前目录执行`npm link`就可以了。你就可以直接运行`command ...`来执行项目了。你也可以直接发布到`npm`上，然后全局安装使用。
+
+我是自己简单的写了一下，一般情况写可以使用`commander`模块：[npm地址](https://www.npmjs.com/package/commander)。
 
 ## 06.js：控制台请求网页
 
