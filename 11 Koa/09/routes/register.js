@@ -12,11 +12,11 @@ router.get('/', async ctx => {
 
 router.post('/', async ctx => {
   let data = ctx.request.body.user;
-  User.getByName(data.name, (err, user) => {
+  await User.getByName(data.name, (err, user) => {
     if (err) throw err;
     if (user.id) {
-      ctx.error('Username already taken!');
-      ctx.redirect('back');
+      ctx.locals.error('Username already taken!');
+      ctx.redirect('/register');
     } else {
       user = new User({
         name: data.name,

@@ -27,7 +27,7 @@ app
   .use(convert(bodyparser()))
   .use(convert(logger()))
   .use(convert(statc(__dirname + '/public')))
-  // .use(messages)
+  .use(messages)
 
 app
   .use(views(`${__dirname}/views`, {

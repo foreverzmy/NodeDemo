@@ -18,7 +18,7 @@ router.post('/', async ctx => {
       ctx.session.uid = user.id;
       ctx.redirect('/');
     } else {
-      ctx.error('Sorry!invalid credentials.')
+      ctx.locals.error('Sorry!invalid credentials.')
       ctx.redirect('back');
     }
   })
