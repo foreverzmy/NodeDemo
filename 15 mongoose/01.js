@@ -13,9 +13,9 @@ const TasksSchema = new Schema({
 mongoose.model('Task', TasksSchema);
 
 let Task = mongoose.model('Task');
-let task = new Task();
 
 // 增加一条数据
+let task = new Task();
 task.project = 'Bikeshed';
 task.description = 'Paint the biskshed red.';
 task.save(err => {
