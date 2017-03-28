@@ -36,13 +36,16 @@ Task.create([{
 })
 
 // 查
-Task.find({ 'project': 'Bikeshed' }, (err, tasks) => {
+Task.find({
+  'project': 'Bikeshed'
+}, (err, tasks) => {
   for (let ii in tasks) {
     console.log(`ID:${tasks[ii]._id}`);
     console.log(tasks[ii].description);
   }
 });
 
+// 改
 Task.update({
   _id: "5866247453157e32343e4f13" // 用内部ID更新
 }, {
@@ -55,7 +58,9 @@ Task.update({
 });
 
 // 删
-Task.remove({ project: 'Bikeshed' }, (err, docs) => {
+Task.remove({
+  project: 'Bikeshed'
+}, (err, docs) => {
   console.log(docs);
   console.log('remove success');
 })
