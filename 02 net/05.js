@@ -5,7 +5,7 @@ const chatServer = net.createServer();
 let clientList = [];
 
 chatServer
-  .on('connection', (client) => { //监听用户连接进入
+  .on('connection', client => { //监听用户连接进入
     client.name = client.remoteAddress + `:` + client.remotePort;
     client.write(`Hi ${client.name}\n`);
     console.log(client.name + `joined`);
@@ -13,14 +13,14 @@ chatServer
     clientList.push(client);
 
     client
-      .on('data', (data) => { //监听用户发送信息
+      .on('data', data => { //监听用户发送信息
         broadcast(data, client);
       })
       .on('end', () => { //监听客户端推出事件，将该客户端删除
         console.log(client.name + `quit`);
         clientList.splice(clientList.indexOf(client), 1);
       })
-      .on('error', (e) => { //错误处理
+      .on('error', e => { //错误处理
         console.log(e);
       })
   })
