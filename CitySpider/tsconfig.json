@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "baseUrl": "",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2017", "dom"],
+    "mapRoot": "./",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "target": "es2017",
+    "typeRoots": [
+      "../node_modules/@types"
+    ]
+  }
+}
