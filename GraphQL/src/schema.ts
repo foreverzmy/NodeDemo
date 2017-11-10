@@ -31,22 +31,22 @@ export const schema = buildSchema(`
 
 export const rootValue = {
   emojis: () => Object.keys(emoji).map(id => emoji[id]),
-  // relatedEmoji: ({ keyword }) => Object.keys(emoji)
-  //   .map(id => emoji[id])
-  //   .filter(emoji => emoji['keywords'].includes(keyword) ? emoji : null),
-  // createNewEmoji: ({ input }) => {
-  //   const newEmoji = emoji[Object.keys(emoji).length + 1] = input;
-  //   const id = Object.keys(emoji).length;
-  //   newEmoji['no'] = id;
-  //   return newEmoji;
-  // },
-  // updateEmoji: ({ id, input }) => {
-  //   emoji[id] = input;
-  //   emoji[id]['no'] = id;
-  //   return emoji[id];
-  // },
-  // deleteEmoji: ({ id }) => {
-  //   delete emoji[id];
-  //   return Object.keys(emoji).map(id => emoji[id]);
-  // }
+  relatedEmoji: ({ keyword }) => Object.keys(emoji)
+    .map(id => emoji[id])
+    .filter(emoji => emoji['keywords'].includes(keyword) ? emoji : null),
+  createNewEmoji: ({ input }) => {
+    const newEmoji = emoji[Object.keys(emoji).length + 1] = input;
+    const id = Object.keys(emoji).length;
+    newEmoji['no'] = id;
+    return newEmoji;
+  },
+  updateEmoji: ({ id, input }) => {
+    emoji[id] = input;
+    emoji[id]['no'] = id;
+    return emoji[id];
+  },
+  deleteEmoji: ({ id }) => {
+    delete emoji[id];
+    return Object.keys(emoji).map(id => emoji[id]);
+  }
 }
