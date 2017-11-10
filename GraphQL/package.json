@@ -1,0 +1,31 @@
+{
+  "name": "graphqltest",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npm run dev & node run serve",
+    "dev": "tsc-watch index.ts --outDir ./dist",
+    "serve": "node ./dist/index",
+    "test": "./node_modules/.bin/mocha -r ./node_modules/ts-node/register lib/**/*.spec.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^0.11.7",
+    "koa": "^2.4.1",
+    "koa-convert": "^1.2.0",
+    "koa-graphql": "^0.7.3",
+    "koa-mount": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/graphql": "^0.11.5",
+    "@types/koa": "^2.0.40",
+    "@types/koa-mount": "^2.0.19",
+    "@types/node": "^8.0.50",
+    "codelyzer": "^4.0.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
