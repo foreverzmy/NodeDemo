@@ -1,0 +1,22 @@
+{
+  "name": "ts-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "nodemon -e ts -w ./ -x ts-node index",
+    "build": "tsc",
+    "test": "./node_modules/.bin/mocha -r ./node_modules/ts-node/register lib/**/*.spec.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^8.0.53",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
