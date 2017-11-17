@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "types": [
-      "node"
+      "node",
+      "jasmine"
     ],
     "baseUrl": "",
-    "declaration": false,
+    "declaration": true,
     "watch": true,
+    "skipLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
@@ -14,10 +20,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es6",
     "typeRoots": [
-      "../node_modules/@types"
+      "./node_modules/@types"
     ]
   }
 }
